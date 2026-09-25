@@ -1,0 +1,107 @@
+                                                                                           Блок 3: Практическое задание
+
+Диаграмма вариантов использования (ссылка прилагается ниже):
+
+https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0-1%22%20id%3D%22vx5uv8AbfvHWINoWK8I-%22%3E1Vpdk6I4FP01Pk4V3%2BKjoM4%2B7FRNTT%2Fs41aEKNQEYkEc7f31GyCJN4AOrWIzdhWdXBJCzjk39yY6s8Ps%2FLVAh%2BQbjTGZWUZ8ntmrmWWZjunwf5XlvbHMbb8x7Is0Fo0uhrf0PyyMhrAe0xiXWkNGKWHpQTdGNM9xxDQbKgp60pvtKNFHPaA97hjeIkS61n%2FSmCWN1bfmF%2FtfON0ncmTTWzR3MiQbi5mUCYrpCZjs9cwOC0pZU8rOISYVeBKXpt%2Fmyl31YgXO2ZAO5XvZ7SKeUrJ3OeHylGYE5bwWnJKU4bcDiqpbJ84vtyUsI7xm8mLJUMEEY7bBDbuUkJASWtRPsndu9Vc3LOhPDO549afqQXMG7M1H2N%2FEO4lX%2FIXIUbzibGXMlmZ1DfwZv%2B%2Bb9bW2B259DesrB8SQzfh1pTfjZUPalcX6ovWvrjYoz%2FXHNWPUr4cLhs8AVEHCV0wzzIp33iQBOvGkKk4XUXmesInHWI6oC9eRVSQkvVePVqP94C6A8j3HTR%2FO7o5mGR8bDRGGixwxHNBjHpdQarwAJnox1QLsF%2BMx6tGvUiiQI%2B%2FGXX2AGlviixH2d1Gv%2BCIfb3f8Tq%2BuFhsgjLVUl1LEWkqobiPUtZQCUepq7IHsAkSkBCkKG9DGB8Mt6wbqgU0DCwxkaPZ7NDj%2FvSg8XRPeDQVqYrjJvDVN5pcO8O2gxjjU2L5g7wG6NjqlisC17KU49Ht4g%2FKZAuG2Pwbj9kQZt6ULQn4V7AGIJyugDVf3%2BzXo3g0PDV%2BLFzmo6T%2BFL2dkvlzsx04fX761tVVicDsBWDS4Ox0OwmHkzQHfS1CW9tcQZptPIcwdl7DdbmdFvQ4We1vP9a4GU%2BVOcF1TTPk6EdcWVktfWG%2BnfO6rVsab6dhw5ryJMrcGnhMA91g09i9gcdvojUAS9Lmu1mbMfk4wm4%2FLGDb58jjvY2zhzW10nbFNx7NC4B2rTrm1Hm46SUYIyktQdl66QjrPYc0f2c%2F8CPf72dZ3HdcYNwUZsvWQnE4xy3SfEQULTESmgOPOmU4f6%2FRYRLi1KYFSyONldYDEa%2FSAc84gt4jjDpODEMSoTHAs9ACk0TyJoWKPWWu3C9m3PJRVoiKs7gNr%2BMz4WMq211qIWh8NHALE0l%2F65B%2FE1LofU2dcTN0PYZrmETnGeBqg2pMF1ftzQXXuB3U%2BLqjOn%2Bn9KGL%2F7o%2B4ZF0ce86NE3SoiseMLCNWRb%2BgChxphMjfaIvJd1qmLKUcydWWMkYz0GBJ0n11g9FDH5jtTEcFNLgPqI9r7olXfjdeOXq4WrQ22c%2FI%2FCtso%2BPkoN3oOR8HVSUorTzD1c7JXgK8%2FSzgUZyl%2BcSQN0BuHXaOkfyO2I0OI3Jr%2FRIu3GdxcUDvE2Pi2n62UbwnWeH2QB7uNc3g0fFa7HBHIqO9tV24j7OR5smQBFpyAwKovpj1R9EtodHPJoxu0uodVkY3qN7k5rGgJ7p%2BpymfiALSNHUgO6c6TSAXvVpYfuwrL%2FwAuCAK96Ob0%2Fob2zt2IS%2FJJPCQXcS4c7c%2Fbe5Dkv07nWrY1PvSz9dMfUhKfmXqIEY%2FMnf%2F0%2Bbu3jd3tQW7f9ZaWB195rx6%2BRFLsy5efgpkr%2F8H%3C%2Fdiagram%3E%3C%2Fmxfile%3E
+
+Диаграмма классов (ссылка прилагается ниже):
+
+https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0-1%22%20id%3D%22vx5uv8AbfvHWINoWK8I-%22%3E7Vltb6M4EP41kbondZVAQtKPeWm2lfZ0PWWr%2B7gyeACrxmaNSdv79TcYk0AgDW3TVT9cKzn2MDO2Hz8zHpKBu0yevimSxn9KCnzgDOnTwF0NHGc0Ho3xo5A8l5LpzAoixahV2gs27F%2BwwqGV5oxC1lDUUnLN0qYwkEJAoBsyopR8bKqFkjdnTUkELcEmILwt%2FYdRHZfSmTPdy2%2BARXE188i7Kp8kpFK2O8liQuVjTeReD9ylklKXveRpCbwAr8KltFsfebpbmAKh%2BxgEP%2FMMVNvKOsr0c7XnLSjNEII5Z5FAkZbpwF0QO%2BIQouVColbIzYZChhO5i1AKbQ9w5NjxmiSMF0d%2FA3wLhVd8EOuEF0qFDpouJZfKzOyGk%2BIf5ZlW8gFqTzzzh0%2FK1W4Jz%2B1qB47HiwX52Im00fBIUqyYt0fER88EeVJJmxbVqHSoKo%2F3BjjP%2BlvXZzKyWLXmFn6WmvGwLXLtqczx8%2F7%2BdtWesLcbSAjjpaeNVkxE7%2FCVkix7lIrekCw%2Bk8tAAdFA57r0t8LBD5ZAF26FEy4jJi7KPTlLu6Qvpe0Cox6I6FqMNZW5vrDKW4n4HtHMU4rLuFMSuQdNA8MsJD881ULDRtM3kAlo9YwqcT3gpza8H%2FfZYRfyTwdjmwPHdkhsbop2rvfhix0bwceimdCEiU8ezrMAgqArnP3ZZDwZ9grnebnPPtF3ia4U0uQ7bOFEVBSqFBA4nRjo2rqH5CSUImloHuiLtNS3w96c%2B0tRUBtNdJ5dyNLIiN7NQbeDg26Tg16Tgs7VWTgY5Jn%2B3BSkBGZhJwW9YAZ%2B2IuCS9wmwtPzDrg0lz1LUyTTnFIFWXaai2ksBZxW86XIszvJhLY%2BsXeMsCknQcm5LradyKcRaKN9w3Dr6rnKk99Ztr87jaHROrxA30Li8WkSux%2FDYllu4VPTeAIzOu6i8czx3Z6FUXVUPTn8colyefp6bypnJvGdpriWGhFOZF6l5RUELCH8hbx8qyE5SMpl%2FfBLP%2B%2FCpEeaxqMNcl7solhDxfmD%2BVtGUoRMJX1Kj4CIAPjH1BwnQmUyOkuoMET6c0dKGIZOd81BPd%2BbvCJSbs1ezxctv3IiNKsxslstF0zfKRZAL%2FZjnt7kvu7k67lKiVGTWtODcnbinoVaKQbu56YWjDANT7uodeVNXdKPWrv8dD5iZQ95j7TKNO9RYKRHmXeYzWXw8PcxRh%2BylGXzLb7UER%2FfuDpy8olahEJx0WSwKebssn97JvVeT3dndga6q59MxJbbQFtfQbX5L3MVQMerXy0wQNB58Y0XjnyOSCF%2BKKo4Py6HaxMNq2GT6KUvTRSmk%2Fa3RXU6o%2BXVqmgXwwGazkamvzDtxLRj016b1qk0sS2tZlaz82gU4OXLtk003g2z81aY9283%2F6P8Msoky2TwUTDLFEQTZec0rrWa%2FhDYHaQ7YK9N36tBN2xKsL9GTxe4%2FuHXr9hg%2B8eX3wZvIPHl6o3o7iu2bnQpI4kU9EfMRIO7oybk3rsgn9fYujTtuiaZ1mA%2BDvnot0JOoki9FfJ9JfM6yIevhnx%2FuB0kRxxdg%2BOwljfcl%2BhdsHoH9wdhjcP9bx7mWe2XI%2Ff6Pw%3D%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E
+
+Диаграмма последовательности (ссылка прилагается ниже):
+
+https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0-1%22%20id%3D%22vx5uv8AbfvHWINoWK8I-%22%3E3Zpbb%2BI6EIB%2FDRJ9WeVOeAyXdivttmiptM8mNmDViSPH4XJ%2B%2FRk7BgJJlxUKLQtIxhnbE3s%2Bz8R26LjDZPMkULb8yTFhHcfCm4476jiO7dke%2FCjJtpT0QiNYCIpNpYNgSv8jRmgZaUExyY8qSs6ZpNmxMOZpSmJ5JENC8PVxtTlnx3fN0ILUBNMYsbr0N8VyWUpDp3eQfyd0sdzd2Q76ZUmCdpXNSPIlwnxdEbnjjjsUnMsyl2yGhCnj7exStnv8oHTfMUFS%2BTcNsoYWRpTL7W680MtMZYuE%2FaBzwmgKV4OMCJoQSQSUMCOeHGSD9ZJKMs1QrJquYSaAbCkTBlc2ZAGORNBE7K8ZQ1lOZ%2FquFkgEiQuR0xX5RfJyDigpL6S603DPVgnnlLEhZ1zoDrsYkXAegzyXgr%2BTSkkQh2Q2h5JykCvECjPIDijqP6p0MNZp1IF%2Bha7Ol3JLS3TNga%2FTgZYMjTIiJNlUjGhs%2FkQ42ERsocqyMi380EyC9WEO2buJYdR45nJ7fInMBF7sNR8YQ8Zg%2FgC5c5%2FIfRJirwl56MzcIGhC%2FiowEaAVWjAGvXICqG4r5d2JIDmYB0nK04f28LrHePdxoE2%2B7l3ync%2FnTtzo0jiYBf7HfKdErCh0uAJ3UORwuzyH2j%2F4gsbXA%2BzZVwDs3SVgYoML95oA94Oeiz4G%2FItkPKeSKyseGI%2BQRFA5imMAfT3AgXUFwP5dAp6HMWn24Fnoe77VBHiCtgnY4AlJskZHfMcbGFCKlN2iyfP1APf6VwAc3CdgX30bV1360wT4hUs6p7F%2BzjZE6ijfpjG0%2BM3FOxHXo9wP26ecGKQE13YTf8JegaUGCrZhEaOLFGQzLiVPoICkOFL7GCVjPH5X2HiRYoINmZqdQV0Eksnr9K2jFh2PKKOQchVA1XOw4w%2FUgjay9bI21OlIL259nVrfOv6o2daCMMC3Oh5jk%2BFM0wmnMPq96e2TCLpfAu9U5LwQMTGtqnuZE0VO6P9ZkURiQWRNkea4H8%2FfoXVuCK1Too0FgSipn4hdLPnDl0KtsQguhOr1zihqEap7Q1DdEqrahYgVmUpoFKV4ilaG8NfiPaXiWBfiDYIzilrE630GXp4RKBpglC81XLssNmdY4XnwXgleB%2BZnDLluDrvQQpljMn4ZPb88PVwFaY3E6SPwUo%2BtKWoRqX9DHuubMLxUw%2Bvu%2BQ3VyBNoKm%2FMZfsX8g39M4pa5Bv8Ey4blOSzcq8yLfSWsys3z%2Fg6rnpKwHVbctWaohZR9m7IVXslsCLDsGKa6vB67LCT6Hl0W%2B7qhi09YWuKWmQcfqK7HjxU7xTPEA%2BNixYzRvOlXkJNEMXjFfSrupbql0f8X8%2Fbu9Snbcs7o6lF4P1%2FIj73S%2Fia%2BujtVa2pjIN%2FBshLHfd0C1VT1CLH3Sn1jYNUnq5Ifn97m8CPY0GXrKHe9%2BKrwDxl4F96NnF6yFFT1CbMTzl3uigM2%2BYYSofaceVt6mMZXndvWSF1du9gtcSxxgmiTDfV8dlkepV3sVHl3e3wBkJ6LRL7lx6C1GZPa4cgcHn4s0FZ%2FfCXDXf8Pw%3D%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E
+
+
+                                                                                           Блок 4: Творческое задание
+
+Пять ключевых проблем исходной архитектуры
+
+1) Антипаттерн «Кодовая свалка» - все 5000 строк кода находятся в одном файле main.py, где смешаны HTTP-обработчики, бизнес-правила и SQL-запросы.
+2) Высокая связанность и отсутствие изоляции слоя данных -  бизнес-логика напрямую зависит от структуры таблиц БД, поэтому любое изменение схемы БД требует ручной правки кода в 20 разных местах.   
+3) Нарушение принципа дублирование кода - необходимость менять код в 20 местах при одном изменении БД свидетельствует о том, что запросы к базе данных и логика маппинга данных многократно скопированы по всему файлу.
+4) Нулевая тестируемост - из-за того, что обработка HTTP-запросов, вычисления и обращения к БД жестко сцеплены внутри одних и тех же функций, невозможно написать модульные тесты для бизнес-логики без поднятия реальной БД и веб-сервера.
+5) Крайне высокая когнитивная сложность и низкая сопровождаемость - отсутствие модульной структуры, абстракций и документации приводит к высокому порогу входа и высокому риску регрессионных ошибок при любых правках.   
+
+
+                                                                                             Целевая архитектура
+
+                                                                    +-------------------------------------------------------------------+
+                                                                    | 1. Слой представления (Presentation / API Layer)                  |
+                                                                    |    - Обработка HTTP-запросов и ответов (FastAPI / Flask Routers)  |
+                                                                    |    - Валидация входных данных и сериализация (Pydantic DTO/Schemas)|
+                                                                    +-------------------------------------------------------------------+
+                                                                                                      |
+                                                                                                      v (вызывает интерфейсы/сервисы)
+                                                                    +-------------------------------------------------------------------+
+                                                                    | 2. Слой бизнес-логики (Business Logic / Service Layer)            |
+                                                                    |    - Доменные модели (Entities) и бизнес-правила (Services)       |
+                                                                    |    - Не знает ни о HTTP, ни о структуре SQL-таблиц                |
+                                                                    +-------------------------------------------------------------------+
+                                                                                                      |
+                                                                                                      v 
+                                                                    +-------------------------------------------------------------------+
+                                                                    | 3. Слой доступа к данным (Data Access / Persistence Layer)        |
+                                                                    |    - Паттерн Repository (единая точка работы с БД для сущности)   |
+                                                                    |    - ORM-модели (SQLAlchemy) и миграции схемы БД (Alembic)        |
+                                                                    +-------------------------------------------------------------------+
+                                                                                                      |
+                                                                                                      v
+                                                                                            [ База данных (БД) ]
+
+
+Пошаговый план рефакторинга
+
+Шаг 1. Покрытие критических сценариев тестами - прежде чем менять структуру main.py, написать верхнеуровневые тесты для ключевых эндпоинтов («черный ящик»). Это создаст страховочную сетку: после каждого шага рефакторинга мы сможем проверять, что поведение системы не сломалось. 
+Шаг 2. Выделение конфигурации и подключения к БД - вынести глобальные переменные, настройки и создание соединения с БД в отдельные модули config.py и database.py.
+Шаг 3. Изоляция слоя доступа к данным - найти все дублирующиеся SQL-запросы  и сгруппировать их в классы-репозитории.Заменить прямые вызовы SQL в main.py на вызовы методов репозиториев. 
+Шаг 4. Выделение слоя бизнес-логики - вынести расчеты, проверки прав и доменные правила из HTTP-обработчиков в сервисные классы (UserService, OrderService).
+Шаг 5. Разделение слоя представления по предметным роутерам - разбить оставшиеся в main.py HTTP-обработчики по тематическим файлам в папке api/routers/, оставив за ними только прием HTTP-запроса.
+Шаг 6. Настройка документации - подключить автогенерацию OpenAPI/ и проверку типов/стиля кода, чтобы новый разработчик вникал в проект за 1–2 дня вместо 2 недель.   
+
+
+Принципы проектирования, которые предотвратят эти проблемы в будущем
+
+1) SRP - каждый класс и модуль отвечает только за один аспект: роутер — за HTTP, сервис — за бизнес-правила, репозиторий — за сохранение в БД.
+2) DRY - знание о схеме базы данных и запросах сосредоточено в единственном месте. Изменение колонки в таблице потребует правки ровно в 1 файле вместо 20.
+3) Abstraction - слой бизнес-логики вызывает простые методы репозитория (например, order_repo.get_by_id(id)), не зная деталей реализации SQL-запроса.
+4) DIP - бизнес-логика зависит от абстракций (интерфейсов репозиториев), а не от конкретной библиотеки работы с БД. 
+5) OCP и KISS - простые, короткие и изолированные модули легко читать новому разработчику, а добавление новых функций происходит путем создания новых классов/обработчиков без риска сломать существующий код.
+
+
+
+                                                                                        Блок 5: Исследовательское задание
+
+Выбранный сервис: Netflix.   
+1. Какую архитектуру использует сервис? - Микросервисная и событийно-ориентированная облачная архитектура.  
+Исторически Netflix начинал с классического монолита (Java-приложение и единая реляционная база данных Oracle в собственном дата-центре), однако после крупного сбоя БД в августе 2008 года 
+(остановившего отгрузку DVD на 3 дня) компания провела масштабную миграцию в облако AWS и разделила монолит на более чем 700–1000 слабосвязанных микросервисов.  
+Каждый микросервис отвечает за строго изолированную бизнес-возможность (управление подпиской, история просмотров, персональные рекомендации, кодирование видео, биллинг).   
+
+2. Какие технологические решения применяются?- Облачная инфраструктура: Amazon Web Services (AWS) для всех вычислений, хранения и масштабирования, а также собственная сеть доставки контента
+Netflix Open Connect (CDN) — специализированные серверы кэширования видео, установленные непосредственно в сетях интернет-провайдеров по всему миру.Backend и API: Java (Spring Boot), Kotlin, Python 
+(для анализа данных и ML), Node.js; для взаимодействия между клиентами и бэкендом активно используется GraphQL Federation (единый граф данных поверх сотен микросервисов) 
+и gRPC для быстрых межсервисных вызовов.Хранение данных (Polyglot Persistence):Apache Cassandra — распределенная NoSQL СУБД для высокой скорости записи и чтения пользовательских событий 
+(история просмотра, закладки).EVCache (на базе Memcached) — распределенное кэширование в оперативной памяти для мгновенного отклика.CockroachDB / MySQL / PostgreSQL — для транзакционных данных и биллинга.
+Потоковая обработка данных: Apache Kafka и Apache Flink для обработки миллиардов событий в реальном времени (аналитика качества видеопотока, клики, рекомендации).
+
+3. Как обеспечивается масштабируемость? - Разделение управления и стриминга: микросервисы в AWS обрабатывают только логику приложения (авторизация, поиск, выбор фильма), 
+а тяжелый видеопоток отдается напрямую с ближайшего к пользователю узла CDN Open Connect, снимая гигантскую нагрузку с основных серверов.Горизонтальное автомасштабирование (Auto-Scaling): 
+так как микросервисы не хранят состояние локально (Stateless), при вечернем пике просмотров в конкретном часовом поясе автоматически поднимаются сотни новых инстансов/контейнеров.Шардирование 
+и георепликация БД: данные в Cassandra и EVCache реплицируются между несколькими географическими регионами AWS (Multi-Region Active-Active). Если целый регион AWS выходит из строя, трафик пользователей прозрачно 
+перенаправляется в соседний регион.
+
+4. Какие архитектурные паттерны используются? - Микросервисная архитектура: декомпозиция по бизнес-возможностям и предметным областям (Domain-Driven Design).   
+API Gateway / Backend for Frontend (BFF) (Zuul / GraphQL Federation): единая точка входа для тысяч различных клиентских устройств (Smart TV, iOS, Android, веб-браузеры, игровые консоли), 
+агрегирующая ответы от десятков внутренних микросервисов.Circuit Breaker (Предохранитель) и Graceful Degradation (Плавная деградация): если микросервис персональных рекомендаций перегружен или недоступен, 
+срабатывает предохранитель — пользователю вместо ошибки 500 мгновенно возвращается заранее закэшированный список «Популярное в вашем регионе», и приложение продолжает работать.
+Database per Service (База данных на сервис): у каждого микросервиса свое изолированное хранилище данных; другим сервисам запрещено обращаться к чужой БД напрямую (только через API или шину событий).
+Chaos Engineering (Инженерия хаоса — Chaos Monkey / Simian Army): намеренное автоматическое отключение случайных серверов и сервисов в рабочей среде для постоянной проверки отказоустойчивости архитектуры.
+
+5. Что можно перенять для учебных проектов?   
+Создавать 700 микросервисов в учебном проекте не нужно (это нарушит принцип KISS), однако следующие практики Netflix отлично применимы даже в небольших студенческих проектах:   
+Четкое разделение ответственности: проектировать учебный проект так, чтобы модули (авторизация, каталог, заказы) были слабо связаны и общались через чистые интерфейсы.   
+Единая точка входа и DTO-схемы (API Gateway / контроллеры): четко отделять внешние контракты API от внутренней структуры таблиц базы данных.   
+Устойчивость к сбоям внешних сервисов (Timeouts & Fallbacks): при обращении учебного проекта к внешним API (платежи, погода, курс валют, LLM) всегда задавать таймауты и предусматривать резервный сценарий (fallback/кэш), чтобы падение внешнего API не «вешало» всю систему.
+Вынесение статики и тяжелых файлов из основного приложения: не хранить видео и изображения внутри базы данных или контейнера с кодом, а отдавать их через объектное хранилище (S3/MinIO) или веб-сервер (Nginx).
+Асинхронная обработка фоновых задач: отправку писем, генерацию отчетов и обработку файлов выносить из основного цикла HTTP-запроса в фоновые задачи (как показано на диаграмме последовательности в Блоке 3).
