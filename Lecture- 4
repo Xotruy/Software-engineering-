@@ -1,0 +1,322 @@
+                                                                                            Задание 1: Аналитическое задание
+
+1. Найденные проблемы: 
+
+1) Неинформативные имена функций (calc, proc): названия не раскрывают намерение — непонятно, что именно вычисляет calc и что обрабатывает proc.   
+2) Однобуквенные имена параметров и переменных (a, b, c, x, r, i) — невозможно понять, где цена, где количество, а где код скидки без чтения всего кода.   
+3) Однобуквенные строковые ключи словаря ('t', 'p', 'q', 'd') и статус 'A': «магические строки», требующие угадывания структуры входных данных (type, price, quantity, discount_code, ACTIVE).   
+4) Магические числа (1, 2, 0.1, 0.2, 0): числовые коды типов скидок (1, 2) и коэффициенты (0.1, 0.2) зашиты прямо в условия без именованных констант или перечисления (Enum).   
+5) Дублирование формулы расчета скидки (x = x - x * 0.1 и x = x - x * 0.2): нарушение принципа DRY — в каждой ветке if/elif повторяется одна и та же математическая операция вычитания процента.   
+6) Смешение уровней абстракции и нарушение SRP в calc: функция одновременно считает базовую стоимость, определяет размер скидки по коду, применяет скидку и валидирует отрицательный баланс.   
+7) Избыточный комментарий вместо говорящего имени (# Расчет итоговой цены): комментарий пытается компенсировать плохое имя функции calc(a, b, c).   
+8) Отсутствие валидации входных данных и сокрытие ошибок (if x < 0: x = 0): вместо проверки корректности цены и количества на входе функция молча обнуляет отрицательный результат, маскируя потенциальные баги в данных.   
+9) Неочевидное поведение при фильтрации в proc(data): для элементов, где i['t'] != 'A', в результирующий список добавляется 0, что смешивает реальные нулевые суммы активных позиций с неактивными записями.  
+10) Полное отсутствие документации (docstring) и аннотаций типов (Type Hints): неизвестны типы параметров, формат словарей в data и возвращаемые значения.   
+
+2. Выявленные проблемы в коде 
+• Абстрактные имена функций calc и proc вместо calculate_Order_item_total и process_order_items.   
+• Однобуквенные переменные a, b, c, x, r, i.   • Непонятные ключи словаря 't', 'p', 'q', 'd'.   Проблемы структуры   
+• Жесткая цепочка if c == 1 ... elif c == 2 вместо словаря ставок скидок (табличной логики).  
+• Дублирование вычисления x = x - x * ....   • Использование сырых словарей (dict) с короткими ключами вместо типизированного объекта/dataclass.  
+• Нарушение принципа единственной ответственности (SRP).   Проблемы логики   
+• Молчаливое превращение отрицательной стоимости в 0 (if x < 0: x = 0) вместо генерации исключения ValueError при отрицательной цене или количестве.   
+• Запись 0 в список результатов для элементов с типом != 'A', что искажает статистику заказов.   Отсутствие документации  
+• Отсутствие docstring у обеих функций.   • Отсутствие аннотаций типов (Type Hints).
+• Наличие бесполезного комментария # Расчет итоговой цены вместо документации контракта функции.   
+
+3 и 4. Исправленный вариант кода с пояснениями    
+Что было исправлено: Однобуквенные переменные и функции переименованы в соответствии с правилом Use Intention-Revealing Names (calculate_item_total, calculate_active_items_totals, unit_price, quantity, discount_tier).   
+Магические числа 1, 2, 0.1, 0.2 и строка 'A' вынесены в именованные константы (DISCOUNT_RATES, ACTIVE_ITEM_TYPE).  
+Цепочка if / elif заменена обращением к словарю DISCOUNT_RATES.get(), что устранило дублирование кода и снизило цикломатическую сложность.  
+Добавлены docstring и аннотации типов.   Pythonfrom typing import Any
+
+ACTIVE_ITEM_TYPE = "A"
+NO_DISCOUNT_RATE = 0.0
+
+DISCOUNT_RATES: dict[int, float] = {
+    1: 0.10,  # Стандартная скидка 10%
+    2: 0.20,  # Повышенная скидка 20%
+}
+
+
+def calculate_item_total(
+    unit_price: float,
+    quantity: int,
+    discount_tier: int = 0,
+) -> float:
+    """Вычисляет итоговую стоимость позиции заказа с учетом скидки.
+
+    Args:
+        unit_price: Цена за единицу товара.
+        quantity: Количество единиц товара.
+        discount_tier: Код уровня скидки (1 — 10%, 2 — 20%).
+
+    Returns:
+        Итоговая неотрицательная стоимость позиции.
+    """
+    base_total = unit_price * quantity
+    discount_rate = DISCOUNT_RATES.get(discount_tier, NO_DISCOUNT_RATE)
+    discounted_total = base_total * (1.0 - discount_rate)
+    return max(0.0, discounted_total)
+
+
+def calculate_active_items_totals(items: list[dict[str, Any]]) -> list[float]:
+    """Обрабатывает список позиций и возвращает список стоимостей.
+
+    Для активных позиций (тип 'A') рассчитывается стоимость со скидкой,
+    для остальных позиций возвращается 0.0.
+
+    Args:
+        items: Список словарей с данными о позициях заказа.
+
+    Returns:
+        Список рассчитанных стоимостей для каждой позиции.
+    """
+    return [
+        calculate_item_total(
+            unit_price=item["price"],
+            quantity=item["quantity"],
+            discount_tier=item.get("discount_tier", 0),
+        )
+        if item.get("type") == ACTIVE_ITEM_TYPE
+        else 0.0
+        for item in items
+    ]
+
+
+5. Оценка цикломатической сложности.
+В исходном коде 3 точки ветвления (if c == 1, elif c == 2, if x < 0): $1 + 3 = 4.
+В исправленном коде ветвления заменены словарем DISCOUNT_RATES.get() и функцией max(), поэтому линейный поток имеет сложность $1 + 0 = 1$.   
+proc / calculate_active_items_totals$M = 3$$M = 3$ (или $M = 1$ при выделении хелпера)В исходной proc 2 точки принятия решений (for i in data и if i['t'] == 'A'): $1 + 2 = 3$.  
+Суммарно по модулю$7$$4$Суммарная сложность снизилась почти вдвое, код в calculate_item_total стал полностью линейным и не требует разветвленных тестов для каждого elif.
+
+
+                                                                                          Задание 2: Рефакторинг кода (Интернет-магазин)
+
+
+
+
+
+1 и 2. Рефакторинг и применение принципов SOLID Какие проблемы были в исходном классе order:   Имя класса order со строчной буквы нарушает PEP 8 , а функция get_orders на самом деле не «получает заказы», 
+а обрабатывает новые заказы и возвращает список их сумм (дезинформация в имени).   Метод process() нарушает Принцип единственной ответственности (SRP): он и считает базовую стоимость корзины, и хранит правила промокодов, 
+и изменяет статус заказа, и накапливает сумму в self.total (при повторном вызове process() сумма удвоится — опасный побочный эффект!).   
+Цепочка if self.promo == "SAVE10" ... elif self.promo == "SAVE20" ... elif self.promo == "VIP" нарушает Принцип открытости/закрытости (OCP) и содержит магические числа 0.9, 0.8, 0.7.   
+Отрефакторенный код с разделением ответственности по SOLID:   
+
+Pythonfrom dataclasses import dataclass, field
+from enum import Enum
+class OrderStatus(str, Enum):
+    """Статусы заказа (вместо магических строк)."""
+    NEW = "new"
+    PROCESSING = "processing"
+    PENDING = "pending"
+
+
+@dataclass(frozen=True)
+class OrderItem:
+    """Позиция заказа (отвечает только за данные и стоимость одной позиции)."""
+    price: float
+    quantity: int
+
+    def calculate_subtotal(self) -> float:
+        if self.price < 0 or self.quantity < 0:
+            raise ValueError("Цена и количество не могут быть отрицательными.")
+        return self.price * self.quantity
+
+
+@dataclass(frozen=True)
+class User:
+    """Модель пользователя."""
+    is_vip: bool = False
+
+
+class DiscountPolicy:
+    """Сервис расчета скидок по промокодам (SRP + OCP).
+    Магические коэффициенты вынесены в константы.
+    """
+    PROMO_MULTIPLIERS: dict[str, float] = {
+        "SAVE10": 0.90,
+        "SAVE20": 0.80,
+        "VIP": 0.70,
+    }
+    DEFAULT_MULTIPLIER: float = 1.0
+
+    @classmethod
+    def apply_discount(cls, amount: float, promo_code: str | None) -> float:
+        if not promo_code:
+            return amount
+        multiplier = cls.PROMO_MULTIPLIERS.get(promo_code, cls.DEFAULT_MULTIPLIER)
+        return round(amount * multiplier, 2)
+
+
+@dataclass
+class Order:
+    """Класс заказа. Изолирует состояние заказа и методы его жизненного цикла."""
+    items: list[OrderItem]
+    user: User
+    promo_code: str | None = None
+    status: OrderStatus = OrderStatus.NEW
+    total: float = field(default=0.0, init=False)
+
+    def calculate_base_total(self) -> float:
+        """Извлеченный метод (Extract Method): подсчет суммы без скидки."""
+        return sum(item.calculate_subtotal() for item in self.items)
+
+    def update_status_after_processing(self) -> None:
+        """Извлеченный метод (Extract Method): обновление статуса по типу клиента."""
+        self.status = (
+            OrderStatus.PROCESSING if self.user.is_vip else OrderStatus.PENDING
+        )
+
+    def process(self) -> float:
+        """Обрабатывает заказ: считает сумму со скидкой и обновляет статус."""
+        base_total = self.calculate_base_total()
+        self.total = DiscountPolicy.apply_discount(base_total, self.promo_code)
+        self.update_status_after_processing()
+        return self.total
+
+
+def process_new_orders(orders: list[Order]) -> list[float]:
+    """Обрабатывает все заказы в статусе NEW и возвращает список их итоговых сумм."""
+    return [
+        order.process()
+        for order in orders
+        if order.status == OrderStatus.NEW
+    ]
+
+
+3. Модульные тесты (unit-тесты, 6 тестов)
+Python
+import unittest
+
+
+class TestOrderProcessing(unittest.TestCase):
+    def setUp(self) -> None:
+        self.default_items = [
+            OrderItem(price=100.0, quantity=2),  # 200.0
+            OrderItem(price=50.0, quantity=1),   # 50.0 -> Итого 250.0
+        ]
+
+    def test_order_without_promo_for_regular_user(self) -> None:
+        """Тест 1: Обычный клиент без промокода получает полную сумму и статус PENDING."""
+        order = Order(items=self.default_items, user=User(is_vip=False))
+        total = order.process()
+        self.assertEqual(total, 250.0)
+        self.assertEqual(order.status, OrderStatus.PENDING)
+
+    def test_order_with_save10_promo(self) -> None:
+        """Тест 2: Промокод SAVE10 уменьшает сумму на 10% (коэффициент 0.9)."""
+        order = Order(items=self.default_items, user=User(is_vip=False), promo_code="SAVE10")
+        self.assertEqual(order.process(), 225.0)
+
+    def test_order_with_save20_promo(self) -> None:
+        """Тест 3: Промокод SAVE20 уменьшает сумму на 20% (коэффициент 0.8)."""
+        order = Order(items=self.default_items, user=User(is_vip=False), promo_code="SAVE20")
+        self.assertEqual(order.process(), 200.0)
+
+    def test_order_with_vip_promo_and_vip_user(self) -> None:
+        """Тест 4: VIP-клиент с промокодом VIP получает скидку 30% и статус PROCESSING."""
+        order = Order(items=self.default_items, user=User(is_vip=True), promo_code="VIP")
+        total = order.process()
+        self.assertEqual(total, 175.0)
+        self.assertEqual(order.status, OrderStatus.PROCESSING)
+
+    def test_process_idempotency_no_side_effect_accumulation(self) -> None:
+        """Тест 5: Повторный вызов process() не удваивает сумму заказа."""
+        order = Order(items=self.default_items, user=User(is_vip=False))
+        first_run = order.process()
+        second_run = order.process()
+        self.assertEqual(first_run, 250.0)
+        self.assertEqual(second_run, 250.0)
+
+    def test_process_new_orders_filters_only_new(self) -> None:
+        """Тест 6: Функция process_new_orders обрабатывает только заказы со статусом NEW."""
+        new_order = Order(items=self.default_items, user=User(is_vip=False))
+        processed_order = Order(
+            items=self.default_items,
+            user=User(is_vip=True),
+            status=OrderStatus.PROCESSING,
+        )
+        results = process_new_orders([new_order, processed_order])
+        self.assertEqual(results, [250.0])
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+
+4. Сравнение исходного и итогового кода по метрикам
+Количество строк (LOC)   ~34 строки~62 строки (с типами и докстрингами) - Небольшое увеличение объема строк за счет декларации типов данных (OrderItem, User, OrderStatus) и разделения классов окупается полной 
+изоляцией логики и отсутствием магических констант.   
+Количество методов и функций   3 (__init__, process, get_orders)   6 компактных методов (по 2–5 строк каждый)Вместо одного «толстого» метода process на 20 строк созданы маленькие атомарные методы, 
+каждый из которых делает ровно одну вещь (SRP).   Читаемость (субъективная оценка)   3 / 10 (смешаны расчеты, промокоды и статусы, есть баг с накоплением self.total += ...)   
+9.5 / 10 (код читается сверху вниз как повествование, имена раскрывают суть без комментариев)   Код стал самодокументируемым, легко расширяемым новыми промокодами и полностью покрытым модульными тестами.   
+
+
+
+                                                                                          Творческое задание — Задание 3: Код-ревью
+
+1. Код-ревью каждого фрагмента
+Фрагмент 1: Функция f(x) (l.append(x[i] * 2) ... return l)
+
+Что сделано хорошо: Функция не изменяет (не мутирует) входной список x, а формирует и возвращает новый список (отсутствуют скрытые побочные эффекты).   
+Что можно улучшить:   Заменить имена f, x, l на содержательные (double_numbers, numbers, doubled_numbers). Имя переменной l особенно опасно, так как в большинстве шрифтов строчная l неотличима от единицы 1 
+и заглавной I (дезинформация).  
+Заменить итерацию по индексам range(len(x)) и l.append(x[i] * 2) на прямое перечисление элементов или списочное включение (list comprehension) [num * 2 for num in numbers].   
+Какие принципы нарушены: Правила именования (Use Intention-Revealing Names, Избегайте дезинформации) и принцип KISS (избыточная индексная арифметика там, где достаточно одной строки).  
+
+Фрагмент 2: Функция g(y) (подсчет частоты элементов в словаре d)Что сделано хорошо: Алгоритмически задача решена верно за линейное время $O(n)$ с использованием хеш-таблицы (словаря), цикл идет напрямую по 
+элементам коллекции for i in y: без лишних индексов.   Что можно улучшить:   Переименовать g(y), d, i в говорящие имена: count_frequencies(items), counts, item.   
+Избавиться от ручного ветвления if i in d: ... else: ..., использовав стандартный инструмент collections.Counter(items) или метод словаря counts[item] = counts.get(item, 0) + 1.   
+Какие принципы нарушены: Имена, раскрывающие намерение, а также принципы DRY / KISS (изобретение собственного велосипеда вместо стандартной библиотеки Python).  
+
+Фрагмент 3: Функция h(z) (# TODO: fix this later / return z.sort())Что сделано хорошо: Разработчик использовал встроенный метод сортировки и оставил отметку TODO, сигнализируя, что участок кода требует внимания.   
+Что можно улучшить (Критическая ошибка!):  
+Метод списка z.sort() в Python сортирует список на месте (in-place) и всегда возвращает None! В результате функция: 1) молча изменяет (мутирует) переданный извне список z, создавая опасный побочный эффект;
+2) возвращает вызывающему коду None вместо отсортированного списка. Нужно заменить z.sort() на return sorted(items).   Комментарий # TODO: fix this later не объясняет, что именно сломано и почему.   
+Какие принципы нарушены: Отсутствие побочных эффектов у функций (No Side Effects), осмысленное именование (h, z) и правила написания хороших комментариев.   
+
+
+2. Исправленный код с объяснениями 
+
+Python
+from collections import Counter
+from typing import Iterable, TypeVar
+
+T = TypeVar("T")
+
+
+def double_values(numbers: Iterable[float]) -> list[float]:
+    """Возвращает новый список, где каждый элемент умножен на 2."""
+    # Почему так: list comprehension читается в одну строку как естественное
+    # предложение, работает быстрее цикла с .append() и не требует индексов i.
+    return [number * 2 for number in numbers]
+
+
+def count_item_frequencies(items: Iterable[T]) -> dict[T, int]:
+    """Подсчитывает количество вхождений каждого элемента в последовательности."""
+    # Почему так: Counter из стандартной библиотеки collections оптимизирован
+    # на уровне C, убирает 6 строк ручного if/else и сразу говорит читателю,
+    # что происходит подсчет частот.
+    return dict(Counter(items))
+
+
+def get_sorted_items(items: Iterable[T]) -> list[T]:
+    """Возвращает новый отсортированный список, не изменяя исходную коллекцию."""
+    # Почему так: встроенная функция sorted() создает и возвращает новый список,
+    # тогда как метод .sort() мутирует входной аргумент (побочный эффект)
+    # и возвращает None, что приводило к багу.
+    return sorted(items)
+
+
+Три общих совета джуну по написанию чистого кода  
+
+1) Пиши код для людей, а не для интерпретатора — трать время на имена: Код читается в 10 раз чаще, чем пишется. Если для понимания функции f(x) нужно прочитать ее тело от начала до конца, значит имя выбрано неудачно.
+Называй функции глаголами (calculate_total, sort_users), а переменные — существительными, точно описывающими их содержимое.   
+
+2) Избегай скрытых побочных эффектов (Side Effects): Функция, которая по своему виду должна что-то вычислять или возвращать новые данные, никогда не должна незаметно модифицировать входные списки/словари или 
+глобальные переменные (как это произошло с z.sort()). Это убережет проект от самых трудноуловимых багов.   
+
+3)Автоматизируй проверку стиля линтерами и форматерами: Настрой в своей IDE автозапуск форматера (Black или Ruff) и линтера (Pylint / Flake8) при каждом сохранении файла.
+Они мгновенно подсветят однобуквенные переменные вроде l, висящие TODO и неидиоматичные конструкции еще до того, как ты отправишь код на ревью.   
